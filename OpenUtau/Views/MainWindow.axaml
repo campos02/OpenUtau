@@ -219,6 +219,7 @@
                            MinHeight="{Binding PianoRollMinHeight}"
                            MaxHeight="{Binding PianoRollMaxHeight}"/>
             <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="4"/>
           </Grid.RowDefinitions>
           <Panel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="24">
@@ -269,14 +270,6 @@
               </Grid>
             </Border>
           </Panel>
-          <ScrollBar Name="HScrollBar" Classes="music" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Margin="0,4,0,4" Orientation="Horizontal" AllowAutoHide="False"
-                    DataContext="{Binding TracksViewModel}"
-                    Maximum="{Binding HScrollBarMax, Mode=OneWay}"
-                    Value="{Binding TickOffset}"
-                    ViewportSize="{Binding ViewportTicks}"
-                    LargeChange="{Binding ViewportTicks}"
-                    SmallChange="{Binding SmallChangeX}" PointerWheelChanged="HScrollPointerWheelChanged"/>
           <ScrollBar Name="VScrollBar" Classes="music" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                     Margin="4,0,4,0" Orientation="Vertical" AllowAutoHide="False"
                     DataContext="{Binding TracksViewModel}"
@@ -400,8 +393,16 @@
           <GridSplitter Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                         Background="{DynamicResource SystemControlBackgroundAltHighBrush}" Focusable="False" Cursor="SizeNorthSouth" IsVisible="{Binding ShowPianoRoll}"/>
           <ContentControl Name="PianoRollContainer" Grid.Row="4" Grid.ColumnSpan="3" Margin="0,-5" Padding="0,5"/>
-          <TextBlock Grid.Row="5" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="20" Margin="4,4,4,0" Text="{Binding ProgressText}"/>
-          <ProgressBar Grid.Row="6" Grid.ColumnSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Value="{Binding Progress}"/>
+          <ScrollBar Name="HScrollBar" Classes="music" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Margin="0,4,0,4" Orientation="Horizontal" AllowAutoHide="False"
+                    DataContext="{Binding TracksViewModel}"
+                    Maximum="{Binding HScrollBarMax, Mode=OneWay}"
+                    Value="{Binding TickOffset}"
+                    ViewportSize="{Binding ViewportTicks}"
+                    LargeChange="{Binding ViewportTicks}"
+                    SmallChange="{Binding SmallChangeX}" PointerWheelChanged="HScrollPointerWheelChanged"/>
+          <TextBlock Grid.Row="6" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Height="20" Margin="4,4,4,0" Text="{Binding ProgressText}"/>
+          <ProgressBar Grid.Row="7" Grid.ColumnSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Value="{Binding Progress}"/>
         </Grid>
       </Carousel>
     </Grid>

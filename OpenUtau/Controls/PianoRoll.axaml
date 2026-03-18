@@ -22,6 +22,7 @@
         <RowDefinition Height="150" 
                        MinHeight="{Binding NotesViewModel.ExpHeightMin}"
                        MaxHeight="{Binding NotesViewModel.ExpHeightMax}"/>
+        <RowDefinition Height="Auto"/>
         <RowDefinition Height="4"/>
       </Grid.RowDefinitions>
       <Grid.ColumnDefinitions>
@@ -37,14 +38,6 @@
                  Width="50" Height="50" Stretch="UniformToFill" Source="{Binding NotesViewModel.Avatar}"/>
         </Border>
       </Grid>
-      <ScrollBar Name="HScrollBar" Classes="music" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                 Margin="0,4,0,4" Orientation="Horizontal" AllowAutoHide="False"
-                 DataContext="{Binding NotesViewModel}"
-                 Maximum="{Binding HScrollBarMax, Mode=OneWay}"
-                 Value="{Binding TickOffset}"
-                 ViewportSize="{Binding ViewportTicks}"
-                 LargeChange="{Binding ViewportTicks}"
-                 SmallChange="{Binding SmallChangeX}" PointerWheelChanged="HScrollPointerWheelChanged"/>
       <ScrollBar Name="VScrollBar" Classes="music" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                  Margin="4,0,4,0" Orientation="Vertical" AllowAutoHide="False"
                  DataContext="{Binding NotesViewModel}"
@@ -775,7 +768,15 @@
           <TextBlock Name="ValueTipText" Margin="2"/>
         </Border>
       </Canvas>
-      <ProgressBar Grid.Row="6" Grid.ColumnSpan="4" Value="{Binding Progress}" IsVisible="{Binding PianoRollDetached}"/>
+      <ScrollBar Name="HScrollBar" Classes="music" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                 Margin="0,4,0,4" Orientation="Horizontal" AllowAutoHide="False"
+                 DataContext="{Binding NotesViewModel}"
+                 Maximum="{Binding HScrollBarMax, Mode=OneWay}"
+                 Value="{Binding TickOffset}"
+                 ViewportSize="{Binding ViewportTicks}"
+                 LargeChange="{Binding ViewportTicks}"
+                 SmallChange="{Binding SmallChangeX}" PointerWheelChanged="HScrollPointerWheelChanged"/>
+      <ProgressBar Grid.Row="7" Grid.ColumnSpan="4" Value="{Binding Progress}" IsVisible="{Binding PianoRollDetached}"/>
     </Grid>
   </Border>
 </UserControl>
